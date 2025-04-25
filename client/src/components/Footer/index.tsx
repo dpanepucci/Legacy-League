@@ -5,13 +5,14 @@ const Footer: React.FC = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    if(window.history.length > 1) { //Check if there is a previous page in the history stack
+    if(window.history.length > 1) {
       navigate(-1);
     } else {
       navigate('/');
     }
   }
 
+// Back button and footer on Sign up and Login
   return (
     <footer className="w-100 mt-auto bg-secondary p-4">
       <div className="container text-center mb-5">
@@ -24,16 +25,7 @@ const Footer: React.FC = () => {
           </button>
         )}
         <h4>
-          Made with{' '}
-          <span
-            className="emoji"
-            role="img"
-            aria-label="heart"
-            aria-hidden="false"
-          >
-            ❤️
-          </span>{' '}
-          by the Tech Thoughts team.
+The Ultimate NBA Match Ups
         </h4>
       </div>
     </footer>

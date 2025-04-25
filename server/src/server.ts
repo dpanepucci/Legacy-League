@@ -1,11 +1,15 @@
 import express from 'express';
 import path from 'node:path';
 import type { Request, Response } from 'express';
-import db from './config/connection.js'
-import { ApolloServer } from '@apollo/server';// Note: Import from @apollo/server-express
+import db from './config/connection.js';
+import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { typeDefs, resolvers } from './schemas/index.js';
 import { authenticateToken } from './utils/auth.js';
+import cors from 'cors'; // Allows front end and back end to talk
+
+// OpenAI
+import simulateRoute from './routes/simulate.js';
 
 const server = new ApolloServer({
   typeDefs,
@@ -19,14 +23,17 @@ const startApolloServer = async () => {
   const PORT = process.env.PORT || 3001;
   const app = express();
 
+  app.use(cors()); 
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
-  app.use('/graphql', expressMiddleware(server as any,
-    {
-      context: authenticateToken as any
-    }
-  ));
+  // Mount the OpenAI simulation route
+  app.use('/api', simulateRoute);
+
+  // GraphQL middleware
+  app.use('/graphql', expressMiddleware(server as any, {
+    context: authenticateToken as any
+  }));
 
   if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/dist')));
@@ -43,3 +50,4 @@ const startApolloServer = async () => {
 };
 
 startApolloServer();
+

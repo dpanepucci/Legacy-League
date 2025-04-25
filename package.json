@@ -19,7 +19,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "concurrently": "^8.2.2",
     "wait-on": "^7.2.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "openai": "^4.96.0"
   }
 }

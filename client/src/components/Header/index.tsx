@@ -5,7 +5,6 @@ import Auth from '../../utils/auth';
 const Header = () => {
   const logout = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    // Logs the user out by calling the logout method from Auth
     Auth.logout();
   };
   return (
@@ -13,9 +12,9 @@ const Header = () => {
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
           <Link className="text-light" to="/">
-            <h1 className="m-0">Tech Thoughts</h1>
+            <h1 className="m-0">Legacy League</h1>
           </Link>
-          <p className="m-0">Get into the mind of a programmer.</p>
+          <p className="m-0">Who's the real GOAT? Challenge your friends, family and coworkers to simulate the greatest NBA macthups!</p>
         </div>
         <div>
           {/* Checking if the user is logged in to conditionally render profile link and logout button */}
