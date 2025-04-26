@@ -5,27 +5,138 @@ type Player = {
   name: string;
   height: string;
   weight: string;
+  threePoint: string;
+  fieldGoal: string;
+  defense: string;
   position: string;
-  primeYear: string;
-  stats: string;
 };
 
 const defaultPlayers: Player[] = [
   {
     name: "Michael Jordan",
-    height: "6'6\"",
-    weight: "216 lbs",
-    position: "SG",
-    primeYear: "1996",
-    stats: "30.4 PPG, 6.6 RPG, 4.3 APG, 2.2 SPG"
+    height: '6-6',
+    weight: '216 lbs',
+    threePoint: '42.7%',
+    fieldGoal: '49.5%',
+    defense: 'NBA All-Defensive First Team, 2 steals per game',
+    position: 'Shooting Guard',
   },
   {
-    name: "LeBron James",
-    height: "6'9\"",
-    weight: "250 lbs",
-    position: "SF",
-    primeYear: "2013",
-    stats: "27.1 PPG, 7.3 RPG, 6.9 APG, 1.7 SPG"
+    name: "Lebron James",
+    height: '6-9',
+    weight: '250 lbs',
+    threePoint: '40.6%',
+    fieldGoal: '56.5%',
+    defense: 'NBA All-Defensive First Team, 1.7 steals per game',
+    position: 'Small Forward',
+  },
+  {
+    name: "Kobe Bryant",
+    height: '6-6',
+    weight: '212 lbs',
+    threePoint: '38.3%',
+    fieldGoal: '45.1%',
+    defense: 'NBA All-Defensive First Team, 2.2 steals per game',
+    position: 'Shooting Guard',
+  },
+  {
+    name: "Larry Bird",
+    height: '6-9',
+    weight: '220 lbs',
+    threePoint: '42.7%',
+    fieldGoal: '52.2%',
+    defense: 'NBA All-Defensive Second Team, 1.6 steals per game',
+    position: 'Small Forward / Power Forward',
+  },
+  {
+    name: "Magic Johnson",
+    height: '6-9',
+    weight: '215 lbs',
+    threePoint: '20.5%',
+    fieldGoal: '52.2%',
+    defense: 'NBA All-Defensive Second Team votes, 1.6 steals per game',
+    position: 'Point Guard',
+  },
+  {
+    name: "Shaquille O'Neal",
+    height: '7-1',
+    weight: '325 lbs',
+    threePoint: '0.0%', // (literally 1 career 3 made lol)
+    fieldGoal: '57.4%',
+    defense: 'NBA All-Defensive Second Team, 3 blocks per game',
+    position: 'Center',
+  },
+  {
+    name: "Stephen Curry",
+    height: '6-2',
+    weight: '185 lbs',
+    threePoint: '45.4%',
+    fieldGoal: '50.4%',
+    defense: '1.8 steals per game, solid team defender',
+    position: 'Point Guard',
+  },
+  {
+    name: "Kevin Durant",
+    height: '6-10',
+    weight: '240 lbs',
+    threePoint: '37.5%',
+    fieldGoal: '53.7%',
+    defense: '1.6 blocks per game, strong rim protector for his position',
+    position: 'Small Forward / Power Forward',
+  },
+  {
+    name: "Tim Ducan",
+    height: '6-11',
+    weight: '250 lbs',
+    threePoint: '0.0%',
+    fieldGoal: '51.3%',
+    defense: 'NBA All-Defensive First Team, 2.9 blocks per game',
+    position: 'Power Forward / Center',
+  },
+  {
+    name: "Hakeem Olajuwon",
+    height: '7-0',
+    weight: '255 lbs',
+    threePoint: '0.0%',
+    fieldGoal: '52.8%',
+    defense: 'Defensive Player of the Year, 3.7 blocks per game',
+    position: 'Center',
+  },
+  {
+    name: "Dirk Nowitzki",
+    height: '7-0',
+    weight: '245 lbs',
+    threePoint: '39.3%',
+    fieldGoal: '51.7%',
+    defense: 'Solid team defender, 0.6 blocks per game',
+    position: 'Power Forward',
+  },
+  {
+    name: "Giannis Antetokounmpo",
+    height: '6-11',
+    weight: '242 lbs',
+    threePoint: '30.3%',
+    fieldGoal: '56.9%',
+    defense: 'NBA All-Defensive First Team, 1.2 blocks and 1.2 steals per game',
+    position: 'Power Forward',
+  },
+  {
+    name: "Wilt Chamberlain",
+    height: '7-1',
+    weight: '275 lbs',
+    threePoint: 'N/A', // (no 3-point line in his era)
+    fieldGoal: '68.3%',
+    defense: 'Elite shot blocker and rebounder (unofficial stats)',
+    position: 'Center',
+  },
+  {
+    name: "Bill Russell",
+    height: '6-10',
+    weight: '215 lbs',
+    threePoint: 'N/A', // (no 3-point line in his era)
+    fieldGoal: '45.7%',
+    defense: '11x Champion, greatest defender ever (5 blocks per game estimated)',
+    position: 'Center',
   }
 ];
 
@@ -41,9 +152,10 @@ const SimulateMatchup = () => {
     name: '',
     height: '',
     weight: '',
-    position: '',
-    primeYear: '',
-    stats: ''
+    threePoint: '',
+    fieldGoal: '',
+    defense: '',
+    position: ''
   });
 
   const simulateGame = async () => {
@@ -82,9 +194,10 @@ const SimulateMatchup = () => {
       name: '',
       height: '',
       weight: '',
-      position: '',
-      primeYear: '',
-      stats: ''
+      threePoint: '',
+      fieldGoal: '',
+      defense: '',
+      position: ''
     });
   };
 
@@ -98,6 +211,7 @@ const SimulateMatchup = () => {
             value={player1Name}
             onChange={(e) => setPlayer1Name(e.target.value)}
             className="ml-2 p-2 border rounded"
+            required
           >
             {players.map(p => (
               <option key={p.name} value={p.name}>{p.name}</option>
@@ -111,6 +225,7 @@ const SimulateMatchup = () => {
             value={player2Name}
             onChange={(e) => setPlayer2Name(e.target.value)}
             className="ml-2 p-2 border rounded"
+            required
           >
             {players.map(p => (
               <option key={p.name} value={p.name}>{p.name}</option>
@@ -121,7 +236,7 @@ const SimulateMatchup = () => {
 
       <button 
         onClick={simulateGame} 
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        className="bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700"
         disabled={loading}
       >
         {loading ? "Simulating..." : `Simulate ${player1Name} vs ${player2Name}`}
@@ -133,9 +248,10 @@ const SimulateMatchup = () => {
           <input name="name" placeholder="Name" value={newPlayer.name} onChange={handleNewPlayerChange} className="p-2 border rounded" />
           <input name="height" placeholder="Height" value={newPlayer.height} onChange={handleNewPlayerChange} className="p-2 border rounded" />
           <input name="weight" placeholder="Weight" value={newPlayer.weight} onChange={handleNewPlayerChange} className="p-2 border rounded" />
+          <input name="threePoint" placeholder="Three Point %" value={newPlayer.threePoint} onChange={handleNewPlayerChange} className="p-2 border rounded" />
+          <input name="fieldGoal" placeholder="Field Goal %" value={newPlayer.fieldGoal} onChange={handleNewPlayerChange} className="p-2 border rounded" />
+          <input name="defense" placeholder="Defense" value={newPlayer.defense} onChange={handleNewPlayerChange} className="p-2 border rounded" />
           <input name="position" placeholder="Position" value={newPlayer.position} onChange={handleNewPlayerChange} className="p-2 border rounded" />
-          <input name="primeYear" placeholder="Prime Year" value={newPlayer.primeYear} onChange={handleNewPlayerChange} className="p-2 border rounded" />
-          <input name="stats" placeholder="Stats" value={newPlayer.stats} onChange={handleNewPlayerChange} className="p-2 border rounded col-span-2" />
         </div>
         <button
           onClick={addNewPlayer}
