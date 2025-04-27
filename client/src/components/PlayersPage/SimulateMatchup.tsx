@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import './SimulateMatchup.css'
 
 type Player = {
   name: string;
@@ -147,6 +148,7 @@ const SimulateMatchup = () => {
   const [player2Name, setPlayer2Name] = useState(players[1].name);
   const [result, setResult] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
 
   // New player form state
   const [newPlayer, setNewPlayer] = useState<Player>({
@@ -177,6 +179,7 @@ const SimulateMatchup = () => {
         player2
       });
       setResult(response.data.result);
+      setIsModalOpen(true); // Open the modal after getting the result
     } catch (error) {
       console.error('Simulation failed:', error);
       setResult('Something went wrong...');
@@ -266,10 +269,18 @@ const SimulateMatchup = () => {
         </button>
       </div>
 
-      <div className="mt-4 whitespace-pre-wrap" // Display the results- move to a model
-      >
-        {result && <p>{result}</p>}
-      </div>
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Simulation Result</h2>
+            <p>{result}</p>
+            <button onClick={() => setIsModalOpen(false)} className="modal-button">
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
