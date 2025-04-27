@@ -61,7 +61,7 @@ const defaultPlayers: Player[] = [
     name: "Shaquille O'Neal",
     height: '7-1',
     weight: '325 lbs',
-    threePoint: '0.0%', // (literally 1 career 3 made lol)
+    threePoint: '0.0%', // Probably the same as his free throw percentage ( Boom roasted )
     fieldGoal: '57.4%',
     defense: 'NBA All-Defensive Second Team, 3 blocks per game',
     position: 'Center',
@@ -140,6 +140,7 @@ const defaultPlayers: Player[] = [
   }
 ];
 
+// Uses useState to update player 1 & 2 information and update simulation results
 const SimulateMatchup = () => {
   const [players, setPlayers] = useState<Player[]>(defaultPlayers);
   const [player1Name, setPlayer1Name] = useState(players[0].name);
@@ -158,6 +159,7 @@ const SimulateMatchup = () => {
     position: ''
   });
 
+  // Sends player information to Open AI, uses Prompt in server side for response 
   const simulateGame = async () => {
     setLoading(true);
     const player1 = players.find(p => p.name === player1Name);
@@ -182,7 +184,7 @@ const SimulateMatchup = () => {
       setLoading(false);
     }
   };
-
+  // Adds new player to the Select Element drop down
   const handleNewPlayerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewPlayer({ ...newPlayer, [e.target.name]: e.target.value });
   };
@@ -207,21 +209,23 @@ const SimulateMatchup = () => {
       <div className="flex flex-col gap-4 mb-4">
         <label>
           Player 1:
-          <select
+            <select // Drop down select for player 1
             value={player1Name}
             onChange={(e) => setPlayer1Name(e.target.value)}
             className="ml-2 p-2 border rounded"
             required
-          >
-            {players.map(p => (
+            >
+            {players
+              .filter(p => p.name !== player2Name) // Exclude the name selected in Player 2
+              .map(p => (
               <option key={p.name} value={p.name}>{p.name}</option>
-            ))}
-          </select>
+              ))}
+            </select>
         </label>
 
         <label>
           Player 2:
-          <select
+          <select // Drop down select for player 2
             value={player2Name}
             onChange={(e) => setPlayer2Name(e.target.value)}
             className="ml-2 p-2 border rounded"
@@ -234,7 +238,7 @@ const SimulateMatchup = () => {
         </label>
       </div>
 
-      <button 
+      <button // Game Simulate Button
         onClick={simulateGame} 
         className="bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700"
         disabled={loading}
@@ -242,7 +246,8 @@ const SimulateMatchup = () => {
         {loading ? "Simulating..." : `Simulate ${player1Name} vs ${player2Name}`}
       </button>
 
-      <div className="mt-6">
+      <div className="mt-6" //Input Field for create a player 
+      > 
         <h3 className="text-lg font-semibold mb-2">Add New Player</h3>
         <div className="grid grid-cols-2 gap-2">
           <input name="name" placeholder="Name" value={newPlayer.name} onChange={handleNewPlayerChange} className="p-2 border rounded" />
@@ -253,7 +258,7 @@ const SimulateMatchup = () => {
           <input name="defense" placeholder="Defense" value={newPlayer.defense} onChange={handleNewPlayerChange} className="p-2 border rounded" />
           <input name="position" placeholder="Position" value={newPlayer.position} onChange={handleNewPlayerChange} className="p-2 border rounded" />
         </div>
-        <button
+        <button // button to submit new player
           onClick={addNewPlayer}
           className="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
         >
@@ -261,7 +266,8 @@ const SimulateMatchup = () => {
         </button>
       </div>
 
-      <div className="mt-4 whitespace-pre-wrap">
+      <div className="mt-4 whitespace-pre-wrap" // Display the results- move to a model
+      >
         {result && <p>{result}</p>}
       </div>
     </div>

@@ -2,11 +2,11 @@ import express from 'express';
 import OpenAI from 'openai';
 
 const router = express.Router();
-
+ // Grabs OpenAI key to send a response to GPT-3.5-turbo
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
-
+ // Prompt for simulation 
 const generateMatchupPrompt = (player1: any, player2: any) => {
     return `
     You are a basketball simulation engine.
@@ -52,6 +52,7 @@ Make it exciting, like a sportswriter wrote it.
 `; 
 };
 
+// Request and Response from OpenAI, throw error if not response is given, model of AI, tell AI to use prompt as well.
 router.post('/simulate', async (req, res) => {
     const { player1, player2 } = req.body;
   
