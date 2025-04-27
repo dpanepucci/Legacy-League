@@ -43,10 +43,8 @@ Simulate a game to 11 (ones and twos, win by 2). Output:
 2. Game Highlights
 3. Key Moments
 4. Who wins and why
-5. Scoreboard with final scores
 
-
-Limit reponse to no more than 200 words.
+Limit response to no more than 150 words.
 
 Make it exciting, like a sportswriter wrote it.
 `; 
