@@ -2,16 +2,16 @@ import { useState, type FormEvent, type ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-
 import Auth from '../utils/auth';
+import './CSS/login.css'; // <-- make sure you import this!
 
 const Login = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [menuOpen, setMenuOpen] = useState(false); // <-- controls showing/hiding the form
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-
     setFormState({
       ...formState,
       [name]: value,
@@ -20,27 +20,43 @@ const Login = () => {
 
   const handleFormSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    console.log(formState);
     try {
       const { data } = await login({
         variables: { ...formState },
       });
 
       Auth.login(data.login.token);
+      setFormState({
+        email: '',
+        password: '',
+      });
     } catch (e) {
       console.error(e);
     }
+  };
 
-    setFormState({
-      email: '',
-      password: '',
-    });
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
+    <main className="login-page">
+      {/* Hamburger Button */}
+      <button className="hamburger" onClick={toggleMenu}>
+        ☰
+      </button>
+
+      {/* Only show the header when menuOpen is true */}
+      {menuOpen && (
+        <div className="home-header">
+          <h1>Welcome to the Basketball Login</h1>
+          {/* You can add additional navigation or content here */}
+        </div>
+      )}
+
+      {/* Only show the login form if menuOpen === true */}
+      {menuOpen && (
+        <div className="card fade-in">
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
           <div className="card-body">
             {data ? (
@@ -68,7 +84,6 @@ const Login = () => {
                 />
                 <button
                   className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
                   type="submit"
                 >
                   Submit
@@ -83,7 +98,7 @@ const Login = () => {
             )}
           </div>
         </div>
-      </div>
+      )}
     </main>
   );
 };

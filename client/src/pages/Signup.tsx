@@ -1,10 +1,9 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
-
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-
 import Auth from '../utils/auth';
+import './CSS/signup.css'; // Ensure you have the CSS file for styling
 
 const Signup = () => {
   const [formState, setFormState] = useState({
