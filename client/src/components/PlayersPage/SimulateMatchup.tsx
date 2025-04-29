@@ -86,7 +86,7 @@ const defaultPlayers: Player[] = [
     position: 'Small Forward / Power Forward',
   },
   {
-    name: "Tim Ducan",
+    name: "Tim Duncan",
     height: '6-11',
     weight: '250 lbs',
     threePoint: '0.0%',

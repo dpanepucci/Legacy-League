@@ -39,7 +39,7 @@ body {
   }
   
   /* Lightning bolt in the center */
-  .bolt {
+  /* .bolt {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -54,16 +54,16 @@ body {
     animation: flicker 1s infinite alternate;
     z-index: 3;
   }
-  
+   */
   /* Flicker animation for the bolt */
-  @keyframes flicker {
+  /* @keyframes flicker {
     0% { opacity: 1; filter: drop-shadow(0 0 10px yellow) drop-shadow(0 0 20px yellow); }
     50% { opacity: 0.8; filter: drop-shadow(0 0 20px yellow) drop-shadow(0 0 30px orange); }
     100% { opacity: 1; filter: drop-shadow(0 0 10px yellow) drop-shadow(0 0 20px yellow); }
-  }
+  } */
   
   /* Thunder flash effect across whole page */
-  .thunder-flash {
+  /* .thunder-flash {
     position: absolute;
     top: 0;
     left: 0;
@@ -74,7 +74,7 @@ body {
     pointer-events: none;
     animation: flash 3s infinite;
     z-index: 4; /* on top of everything */
-  }
+  /* } */ */
   
   /* Flash keyframes */
   /* @keyframes flash {
@@ -84,49 +84,76 @@ body {
   } */
   
   /* Header Section */
-  .home-header {
-    background: rgba(102, 126, 234, 0.85); /* slight transparency */
-    color: white;
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  .home-header h1 {
-    font-size: 3rem;
-  }
-  
-  .home-header .lead {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-  }
-  
-  /* Content Section */
-  .content-section {
-    background-color: rgba(249, 249, 249, 0.95); /* slightly transparent */
-    padding: 2rem;
-  }
-  
-  .content-section h2 {
+  /* Hamburger Button */
+/* Hamburger Button */
+.hamburger {
     font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  /* Footer */
-  footer {
-    background-color: #333;
+    background-color: transparent;
     color: white;
-    text-align: center;
-    padding: 1rem 0;
-  }
-  
-  footer p {
-    margin: 0;
-  }
-  
-  /* Buttons */
-  .btn {
+    border: none;
     padding: 10px 20px;
-    font-size: 1rem;
-    margin: 0.5rem;
-  }
-  
+    cursor: pointer;
+    z-index: 10;
+    display: inline-block;
+}
+
+.hamburger:focus {
+    outline: none; /* Remove focus outline */
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* When hamburger is open, animate the span */
+.hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Dropdown Menu */
+.dropdown-wrapper {
+    position: absolute;
+    top: 60px;  /* Adjust the top position to place the dropdown properly */
+    right: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    display: none;
+    transition: opacity 0.3s ease;
+    width: 200px; /* Adjust the width to fit the menu */
+}
+
+.dropdown-wrapper.show {
+    display: block;
+}
+
+.dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.dropdown-menu .btn {
+    margin: 5px 0;
+    width: 100%; /* Make buttons take the full width of the dropdown */
+}
+
+.dropdown-menu .btn-info {
+    background-color: #007bff;
+}
+
+.dropdown-menu .btn-light {
+    background-color: #f8f9fa;
+}

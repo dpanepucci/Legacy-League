@@ -10,7 +10,7 @@ const Home = () => {
         className="thunder-flash"
         style={{
           backgroundImage: `<img src={mjImage} alt="Michael Jordan" />
-<img src={lebronImage} alt="LeBron James" />)`,
+          <img src={lebronImage} alt="LeBron James" />)`,
           backgroundPosition: 'left center, right center',
           backgroundSize: 'contain, contain',
           backgroundRepeat: 'no-repeat, no-repeat',
@@ -26,13 +26,18 @@ const Home = () => {
         </div>
       </header>
 
-      <section className="content-section py-5" style={{ position: 'relative', zIndex: 2 }}>
-        <div className="container">
-          <h2 className="text-center mb-4 text-light">Get Started</h2>
-          <div className="row justify-center">
-            <div className="col-12 col-md-8">
-              <MainLogin /> {/* Your login component */}
-            </div>
+      <section
+        className="content-section py-5"
+        style={{
+          position: 'relative',
+          zIndex: 2,
+          backgroundColor: 'transparent'    // <- remove white background here
+        }}
+      >
+        <h2 className="text-center mb-4 text-light">Get Started</h2>
+        <div className="row justify-center">
+          <div className="col-12 col-md-8">
+            <MainLogin />
           </div>
         </div>
       </section>
