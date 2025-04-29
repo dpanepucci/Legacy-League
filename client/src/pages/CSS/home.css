@@ -6,12 +6,10 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: black;
-  background-image: url('/images/storm.jpg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  background-color: black; /* ONLY black fallback */
 }
+
+
 
 /* Storm Layer */
 .storm-layer {
@@ -22,8 +20,9 @@ body {
   height: 100%;
   background: url('/images/storm.jpg') center center / cover no-repeat;
   z-index: 0;
-  pointer-events: none; /* players do not block clicks */
+  pointer-events: none; /* storm does not block clicks */
 }
+
 
 
 /* LeBron on the right side */
@@ -73,13 +72,24 @@ body {
 
   
   /* Header Section */
-.home-header {
-  background: rgba(102, 126, 234, 0.85);
-  color: white;
-  padding: 2rem;
-  text-align: center;
-  z-index: 5;
-}
+  .home-header {
+    background: black;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    border-radius: 10px; /* nice soft rounded corners */
+    margin: 0 2rem; /* prevent edge to edge stretching */
+  }
+  
+  header.bg-primary {
+    background: rgba(0, 0, 0, 0.6) !important;
+    color: white;
+    z-index: 5;
+    position: relative;
+  }
+  
 
 /* Content Section */
 .content-section {
@@ -107,7 +117,7 @@ footer {
 
 
 .players-left {
-  position: fixed;
+  position: absolute;
   top: 10%;
   left: 2%;
   width: 120px;
@@ -115,8 +125,8 @@ footer {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  z-index: 1; /* 🛠️ Players are lower than content */
-  pointer-events: none; /* 🛠️ So clicks pass through them */
+  pointer-events: none;
+  z-index: 1;
 }
 
 .player {
@@ -130,6 +140,8 @@ footer {
 .home-page {
   position: relative;
   z-index: 5;
+  background: transparent; /* <-- add this */
+  padding-top: 100px; /* to push content below top */
 }
 
 
@@ -139,7 +151,28 @@ footer {
   background: transparent !important;
   position: relative;
   z-index: 5;
+  backdrop-filter: none; /* make sure no blurry background */
 }
+
+.flanked-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.home-header {
+  flex: 1;
+  max-width: 500px;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  z-index: 5;
+  color: white;
+}
+
 
 /* 🌪️ Sway Animation */
 /* 🌪️ Different sway styles */
