@@ -1,17 +1,17 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useState, type MouseEvent } from 'react';
 import Auth from '../../utils/auth';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const logout = (event: MouseEvent<HTMLButtonElement>) => {
+  const logout = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     Auth.logout();
   };
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setMenuOpen(!menuOpen); // Toggle the menu visibility
   };
 
   return (
@@ -28,7 +28,7 @@ const Header = () => {
         </div>
 
         <div className="header-buttons">
-          {/* Hamburger when NOT logged in */}
+          {/* Hamburger Button when NOT logged in */}
           {!Auth.loggedIn() && (
             <>
               <button
@@ -40,19 +40,20 @@ const Header = () => {
                 <span></span>
               </button>
 
+              {/* Dropdown menu */}
               <div className={`dropdown-wrapper ${menuOpen ? 'show' : ''}`}>
                 <div className="dropdown-menu">
                   <Link
                     className="btn btn-info m-2"
                     to="/login"
-                    onClick={() => setMenuOpen(false)}
+                    onClick={() => setMenuOpen(false)} // Close the menu after selecting
                   >
                     Login
                   </Link>
                   <Link
                     className="btn btn-light m-2"
                     to="/signup"
-                    onClick={() => setMenuOpen(false)}
+                    onClick={() => setMenuOpen(false)} // Close the menu after selecting
                   >
                     Signup
                   </Link>
