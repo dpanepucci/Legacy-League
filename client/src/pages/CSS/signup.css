@@ -38,8 +38,7 @@ body {
     z-index: 2;
   }
   
-  /* Lightning bolt in the center */
-  /* .bolt {
+
     position: absolute;
     top: 50%;
     left: 50%;
@@ -78,7 +77,7 @@ body {
     0%, 90%, 100% { opacity: 0; }
     92% { opacity: 0.7; }
     94% { opacity: 0; }
-  } */
+
   
   /* Header Section */
   .home-header {
