@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import './SimulateMatchup.css'
+import './SimulateMatchup.css';
 
 type Player = {
   name: string;
@@ -138,19 +138,45 @@ const defaultPlayers: Player[] = [
     fieldGoal: '45.7%',
     defense: '11x Champion, greatest defender ever (5 blocks per game estimated)',
     position: 'Center',
+  },
+  {
+    name: "Anthony Edwards",
+    height: '6-4',
+    weight: '225 lbs',
+    threePoint: '35.7%',
+    fieldGoal: '46.1%',
+    defense: 'Strong perimeter defender, 1.3 steals per game',
+    position: 'Shooting Guard / Small Forward',
+  },
+  {
+    name: "Luka Doncic",
+    height: '6-7',
+    weight: '230 lbs',
+    threePoint: '38.2%',
+    fieldGoal: '48.7%',
+    defense: 'Solid post defender for guard, 1.4 steals per game',
+    position: 'Point Guard / Shooting Guard',
+  },
+  {
+    name: "Tyrese Haliburton",
+    height: '6-5',
+    weight: '185 lbs',
+    threePoint: '36.4%',
+    fieldGoal: '47.7%',
+    defense: 'Good team defender, 1.2 steals per game',
+    position: 'Point Guard',
   }
 ];
 
-// Uses useState to update player 1 & 2 information and update simulation results
 const SimulateMatchup = () => {
-  const [players, setPlayers] = useState<Player[]>(defaultPlayers);
-  const [player1Name, setPlayer1Name] = useState(players[0].name);
-  const [player2Name, setPlayer2Name] = useState(players[1].name);
+  const [defaultPlayersState] = useState<Player[]>(defaultPlayers); // Default players are immutable
+  const [userPlayers, setUserPlayers] = useState<Player[]>([]); // Separate state for user-created players, update/delete
+  const [player1Name, setPlayer1Name] = useState(defaultPlayers[0].name);
+  const [player2Name, setPlayer2Name] = useState(defaultPlayers[1].name);
   const [result, setResult] = useState('');
   const [loading, setLoading] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
-
-  // New player form state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+// User created player section useState starting point
   const [newPlayer, setNewPlayer] = useState<Player>({
     name: '',
     height: '',
@@ -161,25 +187,27 @@ const SimulateMatchup = () => {
     position: ''
   });
 
-  // Sends player information to Open AI, uses Prompt in server side for response 
+  const [editingIndex, setEditingIndex] = useState<number | null>(null);
+// Player selection
   const simulateGame = async () => {
     setLoading(true);
-    const player1 = players.find(p => p.name === player1Name);
-    const player2 = players.find(p => p.name === player2Name);
-
+    const allPlayers = [...defaultPlayersState, ...userPlayers];
+    const player1 = allPlayers.find(p => p.name === player1Name);
+    const player2 = allPlayers.find(p => p.name === player2Name);
+// throw error if two players are not picked
     if (!player1 || !player2) {
       setResult('Invalid player selection.');
       setLoading(false);
       return;
     }
-
+// axios to connect back and front end
     try {
       const response = await axios.post('http://localhost:3001/api/simulate', {
         player1,
         player2
       });
       setResult(response.data.result);
-      setIsModalOpen(true); // Open the modal after getting the result
+      setIsModalOpen(true);
     } catch (error) {
       console.error('Simulation failed:', error);
       setResult('Something went wrong...');
@@ -187,14 +215,23 @@ const SimulateMatchup = () => {
       setLoading(false);
     }
   };
-  // Adds new player to the Select Element drop down
+// handling new player
   const handleNewPlayerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewPlayer({ ...newPlayer, [e.target.name]: e.target.value });
   };
 
-  const addNewPlayer = () => {
+  const addOrUpdatePlayer = () => {
     if (!newPlayer.name) return;
-    setPlayers([...players, newPlayer]);
+
+    if (editingIndex !== null) {
+      const updatedPlayers = [...userPlayers];
+      updatedPlayers[editingIndex] = newPlayer;
+      setUserPlayers(updatedPlayers);
+      setEditingIndex(null);
+    } else {
+      setUserPlayers([...userPlayers, newPlayer]);
+    }
+// once upated, reseting new stats for next created player
     setNewPlayer({
       name: '',
       height: '',
@@ -206,52 +243,62 @@ const SimulateMatchup = () => {
     });
   };
 
+  const handleEditPlayer = (index: number) => {
+    const playerToEdit = userPlayers[index];
+    setNewPlayer(playerToEdit);
+    setEditingIndex(index);
+  };
+
+  const handleDeletePlayer = (index: number) => {
+    const updatedPlayers = userPlayers.filter((_, i) => i !== index);
+    setUserPlayers(updatedPlayers);
+  };
+
   return (
     <div className="p-4 max-w-xl mx-auto">
       <h2 className="text-xl font-bold mb-2">Choose Matchup</h2>
-      <div className="flex flex-col gap-4 mb-4">
+      <div className="flex flex-col gap-4 mb-4"> 
         <label>
           Player 1:
-            <select // Drop down select for player 1
+          <select
             value={player1Name}
             onChange={(e) => setPlayer1Name(e.target.value)}
             className="ml-2 p-2 border rounded"
             required
-            >
-            {players
-              .filter(p => p.name !== player2Name) // Exclude the name selected in Player 2
+          >
+            {[...defaultPlayersState, ...userPlayers]
+              .filter(p => p.name !== player2Name)
               .map(p => (
-              <option key={p.name} value={p.name}>{p.name}</option>
+                <option key={p.name} value={p.name}>{p.name}</option>
               ))}
-            </select>
+          </select>
         </label>
 
         <label>
           Player 2:
-          <select // Drop down select for player 2
+          <select
             value={player2Name}
             onChange={(e) => setPlayer2Name(e.target.value)}
             className="ml-2 p-2 border rounded"
             required
           >
-            {players.map(p => (
+            {[...defaultPlayersState, ...userPlayers].map(p => (
               <option key={p.name} value={p.name}>{p.name}</option>
             ))}
           </select>
         </label>
       </div>
 
-      <button // Game Simulate Button
-        onClick={simulateGame} 
+      <button
+        onClick={simulateGame}
         className="bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700"
         disabled={loading}
       >
         {loading ? "Simulating..." : `Simulate ${player1Name} vs ${player2Name}`}
       </button>
 
-      <div className="mt-6" //Input Field for create a player 
-      > 
-        <h3 className="text-lg font-semibold mb-2">Add New Player</h3>
+      <div className="mt-6">
+        <h3 className="text-lg font-semibold mb-2">Add or Update Player</h3>
         <div className="grid grid-cols-2 gap-2">
           <input name="name" placeholder="Name" value={newPlayer.name} onChange={handleNewPlayerChange} className="p-2 border rounded" />
           <input name="height" placeholder="Height" value={newPlayer.height} onChange={handleNewPlayerChange} className="p-2 border rounded" />
@@ -261,15 +308,39 @@ const SimulateMatchup = () => {
           <input name="defense" placeholder="Defense" value={newPlayer.defense} onChange={handleNewPlayerChange} className="p-2 border rounded" />
           <input name="position" placeholder="Position" value={newPlayer.position} onChange={handleNewPlayerChange} className="p-2 border rounded" />
         </div>
-        <button // button to submit new player
-          onClick={addNewPlayer}
+        <button
+          onClick={addOrUpdatePlayer}
           className="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
         >
-          Add Player
+          {editingIndex !== null ? 'Update Player' : 'Add Player'}
         </button>
       </div>
 
-      {/* Modal */}
+      <div className="mt-6">
+        <h3 className="text-lg font-semibold mb-2">Created Players</h3>
+        <ul>
+          {userPlayers.map((player, index) => (
+            <li key={index} className="flex justify-between items-center mb-2">
+              <span>{player.name}</span>
+              <div>
+                <button
+                  onClick={() => handleEditPlayer(index)}
+                  className="mr-2 bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleDeletePlayer(index)}
+                  className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700"
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content">

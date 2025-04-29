@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import SimulateMatchup from '../PlayersPage/SimulateMatchup';
 
+import Tradingcard from '../TradingCard/TradingCard';
+
 const MainLogin = () => {
   
   return (
@@ -11,6 +13,7 @@ const MainLogin = () => {
       {Auth.loggedIn() ? (
         <>
         <SimulateMatchup />
+        <Tradingcard />
         </>
       ) : (
         <p>
