@@ -226,6 +226,8 @@ const SimulateMatchup = () => {
             </select>
         </label>
 
+        <span className="vs-text">VS</span>
+
         <label>
           Player 2:
           <select // Drop down select for player 2
@@ -243,7 +245,7 @@ const SimulateMatchup = () => {
 
       <button // Game Simulate Button
         onClick={simulateGame} 
-        className="bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700"
+        className=" simulate-button bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700"
         disabled={loading}
       >
         {loading ? "Simulating..." : `Simulate ${player1Name} vs ${player2Name}`}
@@ -263,7 +265,7 @@ const SimulateMatchup = () => {
         </div>
         <button // button to submit new player
           onClick={addNewPlayer}
-          className="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+          className="add-player-button mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
         >
           Add Player
         </button>

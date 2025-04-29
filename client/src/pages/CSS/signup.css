@@ -38,7 +38,7 @@ body {
     z-index: 2;
   }
   
-  /* Lightning bolt in the center */
+  /* Lightning bolt in the center
   .bolt {
     position: absolute;
     top: 50%;
@@ -53,14 +53,14 @@ body {
   }
   
   /* Flicker animation for the bolt */
-  @keyframes flicker {
+  /* @keyframes flicker {
     0% { opacity: 1; filter: drop-shadow(0 0 10px yellow) drop-shadow(0 0 20px yellow); }
     50% { opacity: 0.8; filter: drop-shadow(0 0 20px yellow) drop-shadow(0 0 30px orange); }
     100% { opacity: 1; filter: drop-shadow(0 0 10px yellow) drop-shadow(0 0 20px yellow); }
-  }
+  } */
   
   /* Thunder flash effect across whole page */
-  .thunder-flash {
+  /* .thunder-flash {
     position: absolute;
     top: 0;
     left: 0;
@@ -71,14 +71,14 @@ body {
     pointer-events: none;
     animation: flash 3s infinite;
     z-index: 4; /* on top of everything */
-  }
+  /* } */ */
   
   /* Flash keyframes */
-  @keyframes flash {
+  /* @keyframes flash {
     0%, 90%, 100% { opacity: 0; }
     92% { opacity: 0.7; }
     94% { opacity: 0; }
-  }
+  } */ */
   
   /* Header Section */
   .home-header {
