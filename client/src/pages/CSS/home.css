@@ -14,15 +14,33 @@ body {
   body::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 5%;
-    transform: translateY(-50%);
-    background: url('/images/mj.jpg') no-repeat center center;
-    background-size: contain;
-    width: 250px;
-    height: 350px;
-    z-index: 2;
-  }
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;    /* clicks go through */
+    z-index: 2;              /* behind your header/content (z-index:2+) */
+  
+    background-image:
+      url('/images/mj.png'),
+      url('/images/hakeem.png'),
+      url('/images/larry.png'),
+      url('/images/magic.png'),
+      url('/images/shaq.png');
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size: 
+    120px auto,  /* MJ */
+    100px auto,  /* Hakeem */
+    90px auto,   /* Larry */
+    100px auto,  /* Magic */
+    110px auto;  /* Shaq */
+  background-position:
+    5%  20%,     /* MJ at 20% down */
+    5%  38%,     /* Hakeem at 38% down */
+    5%  56%,     /* Larry at 56% down */
+    5%  74%,     /* Magic at 74% down */
+    5%  92%;     /* Shaq at 92% down */
+}
   
   /* LeBron on the right side */
   body::after {
@@ -79,6 +97,13 @@ body {
     92% { opacity: 0.7; }
     94% { opacity: 0; }
   }
+
+  /* Main container */
+.home-page {
+  background-color: transparent; /* Ensure no background on the parent */
+  margin: 0;
+  padding: 0;
+}
   
   /* Header Section */
   .home-header {
@@ -91,7 +116,7 @@ body {
   
   /* Content Section */
   .content-section {
-    background-color: rgba(249, 249, 249, 0.95); /* slightly transparent */
+    background-color: transparent !important; /* Set the background to transparent */
     padding: 2rem;
     z-index: 5;
   }
