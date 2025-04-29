@@ -11,46 +11,45 @@ body {
   }
   
   /* MJ on the left side */
-  body::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    transform: translateY(-50%);
-    background: url('./images/mj.png') no-repeat center center;
-    background-size: contain;
-    width: 250px;
-    height: 350px;
-    z-index: 2;
-  }
-  
-  /* LeBron on the right side */
-  body::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 5%;
-    transform: translateY(-50%);
-    background: url('./images/lebron.png') no-repeat center center;
-    background-size: contain;
-    width: 250px;
-    height: 350px;
-    z-index: 2;
-  }
-  
+.signup-page::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  background: url('/images/mj.png') no-repeat center center;
+  background-size: contain;
+  width: 250px;
+  height: 350px;
+  z-index: 2;
+}
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
+.signup-page::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  background: url('/images/lebron.png') no-repeat center center;
+  background-size: contain;
+  width: 250px;
+  height: 350px;
+  z-index: 2;
+}
+  
+/* {  /* Lightning bolt in the center */
+    /* position: absolute; */
+    /* top: 50%; */
+    /* left: 50%;
     transform: translate(-50%, -50%);
     width: 80px;
     height: 120px;
     background: url('./images/bolt.jpg') no-repeat center center;
     background-size: contain;
-    animation: flicker 1s infinite alternate;
-    z-index: 3;
+    animation: flicker 1s infinite alternate; */
+    /* z-index: 3;
   } */
-  
+   */
   /* Flicker animation for the bolt */
   /* @keyframes flicker {
     0% { opacity: 1; filter: drop-shadow(0 0 10px yellow) drop-shadow(0 0 20px yellow); }
