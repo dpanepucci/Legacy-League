@@ -5,6 +5,11 @@ import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import './CSS/login.css'; // <-- make sure you import this!
 
+<div className="login-page">
+  {/* your login JSX here */}
+</div>
+
+
 const Login = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
