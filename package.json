@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "openai": "^4.96.0"
+    "openai": "^4.96.0",
+    "react": "^19.1.0"
   }
 }

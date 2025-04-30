@@ -86,7 +86,7 @@ const defaultPlayers: Player[] = [
     position: 'Small Forward / Power Forward',
   },
   {
-    name: "Tim Ducan",
+    name: "Tim Duncan",
     height: '6-11',
     weight: '250 lbs',
     threePoint: '0.0%',
@@ -274,6 +274,8 @@ const SimulateMatchup = () => {
           </select>
         </label>
 
+        <span className="vs-text">VS</span>
+
         <label>
           Player 2:
           <select
@@ -292,6 +294,7 @@ const SimulateMatchup = () => {
       <button
         onClick={simulateGame}
         className="bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700"
+
         disabled={loading}
       >
         {loading ? "Simulating..." : `Simulate ${player1Name} vs ${player2Name}`}
@@ -308,9 +311,11 @@ const SimulateMatchup = () => {
           <input name="defense" placeholder="Defense" value={newPlayer.defense} onChange={handleNewPlayerChange} className="p-2 border rounded" />
           <input name="position" placeholder="Position" value={newPlayer.position} onChange={handleNewPlayerChange} className="p-2 border rounded" />
         </div>
+
         <button
           onClick={addOrUpdatePlayer}
           className="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+
         >
           {editingIndex !== null ? 'Update Player' : 'Add Player'}
         </button>
