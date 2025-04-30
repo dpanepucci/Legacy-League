@@ -37,19 +37,22 @@ body {
   z-index: 2;
 }
   
+
 /* {  /* Lightning bolt in the center */
     /* position: absolute; */
     /* top: 50%; */
     /* left: 50%;
+
     transform: translate(-50%, -50%);
     width: 80px;
     height: 120px;
     background: url('./images/bolt.jpg') no-repeat center center;
     background-size: contain;
+
     animation: flicker 1s infinite alternate; */
     /* z-index: 3;
   } */
-   */
+
   /* Flicker animation for the bolt */
   /* @keyframes flicker {
     0% { opacity: 1; filter: drop-shadow(0 0 10px yellow) drop-shadow(0 0 20px yellow); }
@@ -69,7 +72,9 @@ body {
     pointer-events: none;
     animation: flash 3s infinite;
     z-index: 4; /* on top of everything */
-  /* } */ */
+
+  /* } */ 
+
   
   /* Flash keyframes */
   /* @keyframes flash {
