@@ -14,7 +14,14 @@
   gap: 1.5rem;      /* space between Player1, VS, Player2 */
   margin-bottom: 1rem;
 }
-
+.text-xl.font-bold.mb-2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3748;   /* dark gray */
+  margin-bottom: 0.5rem; /* tighten up the spacing */
+  text-align: center;     /* center the text */
+  width: 100%;           /* full width for centering */
+}
 /* 2) Center each label+select stack */
 .flex.flex-col.gap-4.mb-4 label {
   display: flex;
