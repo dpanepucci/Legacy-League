@@ -4,6 +4,8 @@ import LegendsSection from '../components/Home/LegendsSelection.tsx';
 import NewEraSection from '../components/Home/NewEraSection.tsx';
 import './CSS/home.css';
 
+
+
 const Home = () => {
   return (
     <main className="home-page">
@@ -15,7 +17,9 @@ const Home = () => {
           <h1 className="display-4 text-light">Welcome to Legacy League</h1>
           <p className="lead text-light">Challenge your friends to determine the GOAT!</p>
           <div>
-            <Link to="/about" className="btn btn-info m-2">Learn More</Link>
+            <Link to="/about"
+            className="btn btn-info m-2">
+              Meet The Legends</Link>
             <Link to="/contact" className="btn btn-light m-2">Contact Us</Link>
           </div>
         </header>

@@ -3,7 +3,6 @@ import Auth from '../../utils/auth';
 import SimulateMatchup from '../PlayersPage/SimulateMatchup';
 import './index.css'; // Ensure you have the CSS file for styling
 
-import Tradingcard from '../TradingCard/TradingCard';
 
 const MainLogin = () => {
   return (
@@ -14,7 +13,6 @@ const MainLogin = () => {
       {Auth.loggedIn() ? (
         <>
         <SimulateMatchup />
-        <Tradingcard />
         </>
       ) : (
         <p>
