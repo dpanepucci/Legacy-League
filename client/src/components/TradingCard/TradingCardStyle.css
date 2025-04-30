@@ -1,16 +1,16 @@
 .flashcard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
-  justify-items: center;
+  grid-template-columns: repeat(3, 1fr); /* Three cards per row */
+  gap: 30px; /* Add spacing between cards */
+  justify-items: center; /* Center the cards horizontally */
   margin: 20px;
 }
 
 .flashcard-container {
   perspective: 1000px;
   cursor: pointer;
-  width: 150px;
-  height: 200px;
+  width: 400px; /* Increase card width */
+  height: 600px; /* Increase card height */
 }
 
 .flashcard-inner {
@@ -50,5 +50,42 @@
 
 .flashcard-back {
   transform: rotateY(180deg);
-  background-color: #f8f8f8;
+  background-color: #f8f8f8; /* Light background for a clean look */
+  background-image: radial-gradient(circle, #e0e0e0, #f8f8f8); /* Subtle gradient for texture */
+  padding: 20px; /* Add padding for spacing */
+  font-size: 1.2rem; /* Increase font size */
+  line-height: 1.6; /* Adjust line height for readability */
+  overflow: hidden; /* Prevent text from overflowing */
+  text-overflow: ellipsis; /* Add ellipsis if text overflows */
+  word-wrap: break-word; /* Break long words to fit within the card */
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* Center the text */
+  border: 2px solid #333; /* Add a bold border for a trading card feel */
+  border-radius: 12px; /* Slightly round the corners */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+}
+
+.flashcard-back h2 {
+  font-size: 1.5rem; /* Larger font for the title */
+  font-weight: bold; /* Make the title stand out */
+  margin-bottom: 10px; /* Add spacing below the title */
+  color: #333; /* Darker color for contrast */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for text */
+}
+
+.flashcard-back p {
+  font-size: 1rem; /* Standard font size for the description */
+  color: #555; /* Softer color for readability */
+  margin: 0; /* Remove default margin */
+}
+
+.centered-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 70px;
+  color: #333;
+  text-shadow: 2px 2px 10px white;
 }
