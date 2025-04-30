@@ -24,6 +24,7 @@ const MainLogin = () => {
       )}
 
     </div>
+  </div>
   );
 };
 
