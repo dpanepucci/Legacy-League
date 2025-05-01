@@ -260,7 +260,7 @@ const SimulateMatchup = () => {
       <div className="flex flex-col gap-4 mb-4"> 
         <label>
           Player 1:
-          <select
+          <select 
             value={player1Name}
             onChange={(e) => setPlayer1Name(e.target.value)}
             className="ml-2 p-2 border rounded"
@@ -278,7 +278,7 @@ const SimulateMatchup = () => {
 
         <label>
           Player 2:
-          <select
+          <select 
             value={player2Name}
             onChange={(e) => setPlayer2Name(e.target.value)}
             className="ml-2 p-2 border rounded"
