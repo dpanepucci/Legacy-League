@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
+import './index.css'; // Assuming you have a CSS file for styling
 
 const Footer: React.FC = () => {
   const location = useLocation();
@@ -13,23 +14,23 @@ const Footer: React.FC = () => {
   }
 
 // Back button and footer on Sign up and Login
-  return (
-    <footer className="w-100 mt-auto bg-secondary p-4">
-      <div className="container text-center mb-5">
-        {location.pathname !== '/' && (
-          <button
-            className="btn btn-dark mb-3"
-            onClick={handleGoBack}
-          >
-            &larr; Go Back
-          </button>
-        )}
-        <h4>
+return (
+  <footer className="w-100 mt-auto bg-secondary p-4">
+    <div className="container text-center mb-5">
+      {location.pathname !== '/' && (
+        <button
+          className="btn btn-dark mb-3"
+          onClick={handleGoBack}
+        >
+          &larr; Go Back
+        </button>
+      )}
+      <h4>
 The Ultimate NBA Match Ups
-        </h4>
-      </div>
-    </footer>
-  );
+      </h4>
+    </div>
+  </footer>
+);
 };
 
 export default Footer;
