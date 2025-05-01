@@ -68,29 +68,84 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────────────── */
+/* Dropdown */
+.ml-2.p-2.border.rounded {
+  /* Remove default arrow and native styling */
+  appearance: none;            
+  -webkit-appearance: none;    
+  -moz-appearance: none;       
+
+  /* Basic box styling */
+  background-color: #f5f5f5;   
+  border: 1px solid #ccc;      
+  border-radius: 8px;          
+  padding: 0.5em 2.5em 0.5em 1em; /* space for text + arrow */
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+
+  /* Custom arrow as an inline SVG */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23666' d='M2 5L0 0h4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1em center;
+  background-size: .65em auto;
+
+  outline: none;
+  border-color: #ff416c;
+  box-shadow: 0 0 0 3px rgba(255,65,108,0.3);
+}
+.ml-2.p-2.border.rounded:disabled {
+  background-color: #eee;
+  color: #999;
+  cursor: not-allowed;
+}
+/* ─────────────────────────────────────────────────────────────── */
 /* Modal overlay */
+/* 1) Backdrop blur + dim overlay */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(30, 58, 138, 0.8);
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px) brightness(0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
 }
 
+/* 2) Pop-in animation */
+@keyframes modalPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* Modal content */
-.modal-content {
-  background-color: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.modal-overlay > .modal-content {
+  /* layer 1: white at 80% opacity to fade the image */
+  background:
+    linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
+    /* layer 2: your image */
+    url('https://static01.nyt.com/images/2017/04/26/sports/MARIUS2/MARIUS2-articleLarge.jpg?quality=75&auto=webp&disable=upscale') center/cover no-repeat;
+  
+  /* keep your existing styles: */
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow:
+    0 8px 16px rgba(0,0,0,0.2),
+    0 0 30px rgba(255,65,108,0.5);
+  border: 4px solid transparent;
+  border-image: linear-gradient(45deg, #ff416c, #ff4b2b, #ff416c) 1;
+  animation: modalPop 0.3s ease-out;
   max-width: 600px;
   width: 90%;
-  text-align: center; /* fallback if .text-center isn’t applied */
+  text-align: center;
 }
 
 /* ─────────────────────────────────────────────────────────────── */
@@ -173,10 +228,25 @@ button:hover {
   margin: 20px auto 0;
 }
 
-/* Center the Close button in modal */
+/* 4) Close button neon hover */
 .modal-button {
-  display: block;
-  margin: 20px auto 0;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.modal-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 8px rgba(255,65,108,0.8),
+    0 0 16px rgba(255,65,108,0.6);
 }
 
 /* ─────────────────────────────────────────────────────────────── */
