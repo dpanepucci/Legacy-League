@@ -84,60 +84,29 @@ body {
   } */
   
   /* Header Section */
-  /* Hamburger Button */
-/* Hamburger Button */
-.hamburger {
-    font-size: 2rem;
-    background-color: transparent;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    z-index: 10;
-    display: inline-block;
-}
-
-.hamburger:focus {
-    outline: none; /* Remove focus outline */
-}
-
-.hamburger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    background-color: white;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* When hamburger is open, animate the span */
-.hamburger.open span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.open span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.open span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
-
+ 
 /* Dropdown Menu */
 .dropdown-wrapper {
-    position: absolute;
-    top: 60px;  /* Adjust the top position to place the dropdown properly */
-    right: 10px;
-    background-color: #333;
-    border-radius: 5px;
-    display: none;
-    transition: opacity 0.3s ease;
-    width: 200px; /* Adjust the width to fit the menu */
+  display: none;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background-color: #333;
+  border-radius: 5px;
+  width: 200px;
+  z-index: 1000;
 }
 
 .dropdown-wrapper.show {
-    display: block;
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
+
+
 
 .dropdown-menu {
     display: flex;
@@ -157,3 +126,30 @@ body {
 .dropdown-menu .btn-light {
     background-color: #f8f9fa;
 }
+.tight-header {
+  background-color: rgba(0, 5, 20, 0.7) !important;
+
+  color: white;
+  padding: 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+
+
+.tight-header .container {
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 auto;
+  width: 100%;
+}
+
+
+.tight-header h1,
+.tight-header p {
+  margin: 0 !important;
+  padding: 0.1rem 0 !important;
+  line-height: 1 !important;
+}
+
+

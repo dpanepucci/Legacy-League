@@ -1,0 +1,17 @@
+.transparent-footer {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* transparent black */
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  

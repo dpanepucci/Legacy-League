@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
+import './index.css'; // Assuming you have a CSS file for styling
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,12 +11,11 @@ const Header = () => {
     Auth.logout();
   };
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen); // Toggle the menu visibility
-  };
-
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
+    <header className="tight-header">
+
+
+
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
           <Link className="text-light" to="/">
@@ -28,17 +28,10 @@ const Header = () => {
         </div>
 
         <div className="header-buttons">
-          {/* Hamburger Button when NOT logged in */}
+         
           {!Auth.loggedIn() && (
             <>
-              <button
-                className={`hamburger ${menuOpen ? 'open' : ''}`}
-                onClick={toggleMenu}
-              >
-                <span></span>
-                <span></span>
-                <span></span>
-              </button>
+            
 
               {/* Dropdown menu */}
               <div className={`dropdown-wrapper ${menuOpen ? 'show' : ''}`}>
