@@ -1,82 +1,136 @@
-
-/* Modal Post Submit */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;      /* space between Player1, VS, Player2 */
-  margin-bottom: 1rem;
-}
-.text-xl.font-bold.mb-2 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #2d3748;   /* dark gray */
-  margin-bottom: 0.5rem; /* tighten up the spacing */
-  text-align: center;     /* center the text */
-  width: 100%;           /* full width for centering */
-}
-/* 2) Center each label+select stack */
-.flex.flex-col.gap-4.mb-4 label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;  /* label above select, both centered */
-  margin: 0;             /* reset any default spacing */
-}
-
-/* 3) Nudge VS down between the selects */
-.vs-text {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #e53e3e;
-  margin-top: 10px;      /* drop it lower */
-  margin-bottom: -10px;  /* tighten above/below if needed */
-  line-height: 1;
-  display: inline-block;
-}
-
-/* 4) Center the simulate button under VS */
-.simulate-button {
-  display: block !important;
-  margin: 20px auto 0 !important;
-}
-.add-player-button {
-  display: block;
-  margin: 20px auto 0;
-}
-
-/* ───────────────────────────────────────────────────────── */
-/* Rest of your existing styling (background, modal, selects, other buttons) */
-
+/* ─────────────────────────────────────────────────────────────── */
+/* Global & page background */
 body {
   margin: 0;
   font-family: sans-serif;
   background: linear-gradient(135deg, #1e3a8a, #9333ea);
 }
 
-.modal-overlay {
-  position: fixed; top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(30,58,138,0.8);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 9999;
+/* ───────────────────────────────────────────────── */
+/* Glowing red border + rounded corners */
+.main-login-wrapper.simulator {
+  background-color: rgba(255, 255, 255, 0.8); /* semi-transparent white */
+  position: relative;            /* needed for the glow pseudo–element */
+  border-radius: 16px;           /* nice rounded corners */
+  overflow: visible;             /* allow the glow to show */
+  padding: 1rem;  
+  width: 150%;               /* preserve your inner spacing */
 }
 
-.modal-content {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  max-width: 600px; width: 90%;
+/* extra layer for a crisp, animated glow outside the box */
+.main-login-wrapper.simulator::before {
+  content: "";
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border-radius: inherit;
+  box-shadow:
+    0 0 8px rgba(255,0,0,0.7),
+    0 0 16px rgba(255,0,0,0.5),
+    0 0 24px rgba(255,0,0,0.3);
+  animation: redGlow 2s infinite alternate ease-in-out;
+  pointer-events: none;  /* don’t interfere with clicks */
+}
+
+/* keyframes to pulse the glow */
+@keyframes redGlow {
+  from {
+    box-shadow:
+      0 0 4px rgba(255,0,0,0.5),
+      0 0 12px rgba(255,0,0,0.4),
+      0 0 20px rgba(255,0,0,0.2);
+  }
+  to {
+    box-shadow:
+      0 0 12px rgba(255,0,0,0.9),
+      0 0 24px rgba(255,0,0,0.7),
+      0 0 32px rgba(255,0,0,0.5);
+  }
+}
+
+
+.login-container.simulator {
+  background-color: transparent;   /* or whatever you want */
+  width: 60%;
+  margin: 0 auto;
+  padding: 0px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: none;           /* remove any width cap */
+}
+.login-container.simulator h3 {
+  background-color: transparent;
+
+}
+
+/* Utility: center text */
+.text-center {
   text-align: center;
 }
 
+/* ─────────────────────────────────────────────────────────────── */
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(30, 58, 138, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Modal content */
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 90%;
+  text-align: center; /* fallback if .text-center isn’t applied */
+}
+
+/* ─────────────────────────────────────────────────────────────── */
+/* Horizontal row: Player1 ▼   VS   Player2 ▼ */
+.flex.flex-col.gap-4.mb-4 {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Center each label + its select */
+.flex.flex-col.gap-4.mb-4 label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+/* Style the VS */
+.vs-text {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #e53e3e;
+  margin: 0 0.75rem;
+  line-height: 1;
+  display: inline-block;
+  align-self: center;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.2); }
+}
+
+/* ─────────────────────────────────────────────────────────────── */
+/* Dropdown styling */
 select {
   margin-top: 8px;
   padding: 10px;
@@ -86,11 +140,12 @@ select {
   min-width: 160px;
 }
 
+/* ─────────────────────────────────────────────────────────────── */
+/* Base button styles */
 button {
   background: linear-gradient(to right, #ff416c, #ff4b2b);
   color: white;
   padding: 12px 24px;
-  margin: 20px 10px 0;
   border: none;
   border-radius: 30px;
   cursor: pointer;
@@ -99,15 +154,48 @@ button {
   transition: transform 0.2s, background 0.3s;
 }
 
+/* Hover for all buttons */
 button:hover {
   transform: scale(1.05);
   background: linear-gradient(to right, #ff4b2b, #ff416c);
 }
 
-.grid { display: grid; }
-.grid-cols-2 { grid-template-columns: repeat(2,1fr); }
-.gap-2 { gap: 0.5rem; }
-.mt-6 { margin-top: 1.5rem; }
+/* ─────────────────────────────────────────────────────────────── */
+/* Center the Simulate button */
+.simulate-button {
+  display: block;
+  margin: 20px auto 0;
+}
+
+/* Center the Add Player button */
+.add-player-button {
+  display: block;
+  margin: 20px auto 0;
+}
+
+/* Center the Close button in modal */
+.modal-button {
+  display: block;
+  margin: 20px auto 0;
+}
+
+/* ─────────────────────────────────────────────────────────────── */
+/* “Add New Player” grid & inputs */
+.grid {
+  display: grid;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
 
 input {
   padding: 8px;
@@ -117,3 +205,4 @@ input {
   width: 100%;
   box-sizing: border-box;
 }
+
