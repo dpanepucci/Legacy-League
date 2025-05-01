@@ -6,19 +6,20 @@
   }
   
   .circle-slot {
-    position: absolute;
-    width: 80px;
+    position: relative;
+    width: 300px; /* Increase container size */
     text-align: center;
     color: white;
-    font-size: 0.8rem;
+    font-size: 1.5rem; /* Increase font size for text */
+    margin-bottom: 3rem; /* Add spacing between images */
     transition: transform 0.3s;
   }
   
   .circle-slot img {
-    width: 70px;
+    width: 600px; /* Massive image size */
     height: auto;
     object-fit: contain;
-    margin-bottom: 0.3rem;
+    margin-bottom: 1rem; /* Add spacing below the image */
   }
   
   /* Circular positioning */
@@ -29,22 +30,111 @@
   .slot5 { top: 25%; left: 10%; transform: translate(-50%, -50%) rotate(-6deg); }
   
   .circle-slot:hover {
-    transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+    transform: scale(1.2); /* Slightly enlarge on hover */
     z-index: 2;
   }
   
   .legends-wrapper {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 2rem;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    margin: 2rem auto; /* Center the wrapper on the page */
   }
   
   .legends-title {
-    font-size: 2rem;
+    font-size: 3rem; /* Increase title size */
     color: white;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     letter-spacing: 1px;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    text-align: center; /* Center the title text */
+  }
+
+  .tracking-image {
+    position: absolute; /* Allow the image to move freely */
+    width: 300px; /* Adjust the size of the image */
+    height: auto;
+    object-fit: contain;
+    animation: bounceAround 5s infinite alternate ease-in-out; /* Apply bounce animation */
+    z-index: -1; /* Push the image to the back */
+    opacity: 0.6; /* Optional: Add transparency for a subtle background effect */
   }
   
+  /* Keyframes for bouncing around the screen */
+  @keyframes bounceAround {
+    0% {
+      top: 0;
+      left: 0;
+    }
+    25% {
+      top: 10%;
+      left: 80%;
+    }
+    50% {
+      top: 50%;
+      left: 50%;
+    }
+    75% {
+      top: 80%;
+      left: 20%;
+    }
+    100% {
+      top: 90%;
+      left: 90%;
+    }
+  }
+
+
+  .legends-wrapper3 {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    margin: 2rem auto; /* Center the wrapper on the page */
+  }
+  
+  .legends-title3 {
+    font-size: 3rem; /* Increase title size */
+    color: white;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    text-align: center; /* Center the title text */
+  }
+
+  .tracking-image3 {
+    position: absolute; /* Allow the image to move freely */
+    width: 300px; /* Adjust the size of the image */
+    height: auto;
+    object-fit: contain;
+    animation: bounceAround3 5s infinite alternate ease-in-out; /* Apply bounce animation */
+    z-index: -1; /* Push the image to the back */
+    opacity: 0.6; /* Optional: Add transparency for a subtle background effect */
+  }
+  
+  /* Keyframes for bouncing around the screen */
+  @keyframes bounceAround3 {
+    0% {
+      top: 5%;
+      left: 10%;
+    }
+    20% {
+      top: 25%;
+      left: 70%;
+    }
+    40% {
+      top: 60%;
+      left: 40%;
+    }
+    60% {
+      top: 75%;
+      left: 85%;
+    }
+    80% {
+      top: 35%;
+      left: 20%;
+    }
+    100% {
+      top: 15%;
+      left: 90%;
+    }
+  }
