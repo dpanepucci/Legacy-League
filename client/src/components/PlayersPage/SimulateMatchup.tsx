@@ -255,7 +255,7 @@ const SimulateMatchup = () => {
   };
 
   return (
-    <div className="p-4 max-w-xl mx-auto">
+    <div className="main-login-wrapper simulator p-4 max-w-xl mx-auto">
       <h2 className="text-xl font-bold mb-2">Choose Matchup</h2>
       <div className="flex flex-col gap-4 mb-4"> 
         <label>
