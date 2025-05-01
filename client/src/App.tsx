@@ -43,10 +43,12 @@ function App() {
         <div className="container">
           <Outlet />
         </div>
-        <Footer />
       </div>
+      <Footer />
     </ApolloProvider>
   );
 }
+
+
 
 export default App;
