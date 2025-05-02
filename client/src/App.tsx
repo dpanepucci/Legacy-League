@@ -43,8 +43,8 @@ function App() {
         <div className="container">
           <Outlet />
         </div>
+        <Footer /> {/* ✅ Moved inside the flex container */}
       </div>
-      <Footer />
     </ApolloProvider>
   );
 }

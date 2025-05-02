@@ -1,25 +1,17 @@
 .transparent-footer {
-  width: 100vw; /* force full width */
-  background-color: rgba(0, 0, 0, 0.7); /* transparent black */
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+
   color: white;
-  padding: 1rem 0;
+  padding: 2rem 1rem;
   text-align: center;
-  position: relative;
-  left: 0;
-  bottom: 0;
-  z-index: 100;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   box-sizing: border-box;
 }
 
-
-
 .footer-content {
-  max-width: 100%;
-  margin: 0 auto;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
 }
-
-body, html {
-  margin: 0;
-  padding: 0;
-}
-

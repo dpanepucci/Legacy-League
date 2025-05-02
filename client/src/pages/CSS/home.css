@@ -98,14 +98,7 @@ body {
   z-index: 5;
 }
 
-/* Footer */
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 1rem 0;
-  z-index: 5;
-}
+
 
 /* Buttons */
 .btn {
