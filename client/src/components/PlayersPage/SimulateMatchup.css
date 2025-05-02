@@ -440,3 +440,16 @@ input {
   box-sizing: border-box;
 }
 
+.simulate-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  /* Remove or comment out the background line below */
+  /* background: linear-gradient(135deg, #1e3a8a, #9333ea); */
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
