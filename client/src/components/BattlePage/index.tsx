@@ -17,8 +17,8 @@ const MainLogin = () => {
         </>
       ) : (
         <p>
-          Slow down buddy, please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup</Link> before playing.
+          {/* Slow down buddy, please{' '}
+          <Link to="/login">login</Link> or <Link to="/signup">signup</Link> before playing. */}
         </p>
       )}
 

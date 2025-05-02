@@ -6,6 +6,7 @@ body {
   background: linear-gradient(135deg, #1e3a8a, #9333ea);
 }
 
+
 /* ───────────────────────────────────────────────── */
 /* Glowing red border + rounded corners */
 .main-login-wrapper.simulator {
@@ -70,34 +71,197 @@ body {
 /* ─────────────────────────────────────────────────────────────── */
 /* Dropdown */
 .ml-2.p-2.border.rounded {
-  /* Remove default arrow and native styling */
-  appearance: none;            
-  -webkit-appearance: none;    
-  -moz-appearance: none;       
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 
-  /* Basic box styling */
-  background-color: #f5f5f5;   
-  border: 1px solid #ccc;      
-  border-radius: 8px;          
-  padding: 0.5em 2.5em 0.5em 1em; /* space for text + arrow */
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5em 2.5em 0.5em 1em;
   font-size: 1rem;
   color: #333;
   cursor: pointer;
 
-  /* Custom arrow as an inline SVG */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23666' d='M2 5L0 0h4z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1em center;
   background-size: .65em auto;
 
+  /* transition for all the fun stuff */
+  transition: 
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.15s ease,
+    background-image 0.25s ease;
+}
+.ml-2.p-2.border.rounded:hover {
+  border-color: #ff416c;
+  box-shadow: 0 0 8px rgba(255,65,108,0.4);
+  transform: scale(1.02);
+  background-color: #fff; /* lighten up just a hair */
+
+  /* swap arrow fill to pink */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23ff416c' d='M2 5L0 0h4z'/%3E%3C/svg%3E");
+}
+.ml-2.p-2.border.rounded:focus {
   outline: none;
   border-color: #ff416c;
-  box-shadow: 0 0 0 3px rgba(255,65,108,0.3);
+  box-shadow: 0 0 8px rgba(255,65,108,0.4);
+  transform: scale(1.02);
+  background-color: #fff; /* lighten up just a hair */
+
+  /* swap arrow fill to pink */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23ff416c' d='M2 5L0 0h4z'/%3E%3C/svg%3E");
 }
-.ml-2.p-2.border.rounded:disabled {
-  background-color: #eee;
-  color: #999;
-  cursor: not-allowed;
+/* ─────────────────────────────────────────────────────────── */
+/* Red outline + glow on your home header text */
+.home-header .display-4,
+.home-header .lead {
+  color: #fff;
+  /* strong red outline */
+  -webkit-text-stroke: 1px #e53e3e;
+  text-stroke: 1px #e53e3e;
+  /* multi-layer red glow */
+  text-shadow:
+    0 0 2px   #e53e3e,
+    0 0 6px   #f56565,
+    0 0 12px  #feb2b2;
+}
+
+/* Neon-pulse on hover, now in red */
+.home-header .display-4:hover {
+  animation: neon-pulse-red 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes neon-pulse-red {
+  from {
+    text-shadow:
+      0 0 4px  #e53e3e,
+      0 0 12px #f56565,
+      0 0 20px #feb2b2;
+  }
+  to {
+    text-shadow:
+      0 0 8px  #e53e3e,
+      0 0 16px #f56565,
+      0 0 24px #feb2b2;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* Red outline + glow on your home header text (pure red) */
+.home-header .display-4,
+.home-header .lead {
+  color: #fff;
+  /* pure red stroke */
+  -webkit-text-stroke: 1px #ff0000;
+  text-stroke: 1px #ff0000;
+  /* multi-layer red glow */
+  text-shadow:
+    0 0 2px  #ff0000,
+    0 0 6px  rgba(255,0,0,0.7),
+    0 0 12px rgba(255,0,0,0.5);
+}
+
+/* Neon-pulse on hover, same red timing */
+.home-header .display-4:hover {
+  animation: neon-pulse-red 2s infinite alternate ease-in-out;
+}
+
+@keyframes neon-pulse-red {
+  from {
+    text-shadow:
+      0 0 4px  #ff0000,
+      0 0 12px rgba(255,0,0,0.7),
+      0 0 20px rgba(255,0,0,0.5);
+  }
+  to {
+    text-shadow:
+      0 0 8px  #ff0000,
+      0 0 16px rgba(255,0,0,0.7),
+      0 0 24px rgba(255,0,0,0.5);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* Gold outline + glow on your home header text */
+.home-header .display-4 {
+  font-size: 3.5rem;    /* from ~2.5rem up to 3.5rem */
+}
+.home-header .lead {
+  font-size: 1.75rem;   /* from ~1.25rem up to 1.75rem */
+}
+/* ─────────────────────────────────────────────────────────── */
+/* Red outline + glow on your home header text */
+.home-header .display-4,
+.home-header .lead {
+  color: #fff;
+  /* strong red outline */
+  -webkit-text-stroke: 1px #e53e3e;
+  text-stroke: 1px #e53e3e;
+  /* multi-layer red glow */
+  text-shadow:
+    0 0 2px   #e53e3e,
+    0 0 6px   #f56565,
+    0 0 12px  #feb2b2;
+    /* NEW: backdrop behind the text */
+    display: inline-block;               /* shrink-wrap to text */
+    background-color: rgba(0, 0, 0, 0.6);/* dark semi-transparent */
+    padding: 0.2em 0.5em;                /* space around letters */
+    border-radius: 0.25em;               /* soften the corners */
+    
+    /* if your text wraps, keep the box around each line */
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+/* Neon-pulse on hover, now in red */
+.home-header .display-4:hover {
+  animation: neon-pulse-red 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes neon-pulse-red {
+  from {
+    text-shadow:
+      0 0 4px  #e53e3e,
+      0 0 12px #f56565,
+      0 0 20px #feb2b2;
+  }
+  to {
+    text-shadow:
+      0 0 8px  #e53e3e,
+      0 0 16px #f56565,
+      0 0 24px #feb2b2;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* “Meet The Legends” button → gold gradient + pop */
+.home-header .btn-info {
+  background: linear-gradient(45deg, #FFD700, #DAA520);
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.home-header .btn-info:hover {
+  background: linear-gradient(45deg, #DAA520, #FFD700);
+  transform: scale(1.05);
+  box-shadow:
+    0 0 8px  rgba(255,215,0,0.7),
+    0 0 16px rgba(255,215,0,0.5);
+}
+
+.home-header .btn-info:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 4px rgba(255,215,0,0.7);
 }
 /* ─────────────────────────────────────────────────────────────── */
 /* Modal overlay */
