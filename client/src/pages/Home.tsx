@@ -19,7 +19,7 @@ const Home = () => {
           <div>
             <Link to="/about"
             className="btn btn-info m-2">
-              Meet The Legends</Link>
+              Legends</Link>
             <Link to="/contact" className="btn btn-light m-2">Contact Us</Link>
           </div>
         </header>
