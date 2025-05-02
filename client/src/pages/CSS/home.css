@@ -23,65 +23,19 @@ body {
   pointer-events: none; /* storm does not block clicks */
 }
 
-
-
-/* LeBron on the right side */
-
-
-  
-  /* Lightning bolt in the center */
-  /* .bolt {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 120px;
-    background: url('/images/bolt.svg') no-repeat center center;
-    background-size: contain;
-    animation: flicker 1s infinite alternate;
-    z-index: 3;
-  }
-  
-  /* Flicker animation for the bolt */
-  /* @keyframes flicker {
-    0% { opacity: 1; filter: drop-shadow(0 0 10px yellow) drop-shadow(0 0 20px yellow); }
-    50% { opacity: 0.8; filter: drop-shadow(0 0 20px yellow) drop-shadow(0 0 30px orange); }
-    100% { opacity: 1; filter: drop-shadow(0 0 10px yellow) drop-shadow(0 0 20px yellow); }
-  } */
-  
-  /* Thunder flash effect across whole page */
-  /* .thunder-flash {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    opacity: 0;
-    pointer-events: none;
-    animation: flash 3s infinite;
-    z-index: 4; on top of everything */
-  /* } */
-  
-  /* Flash keyframes */
-  /* @keyframes flash {
-    0%, 90%, 100% { opacity: 0; }
-    92% { opacity: 0.7; }
-    94% { opacity: 0; }
-
   
   /* Header Section */
   .home-header {
-    background: black;
-    color: white;
-    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     text-align: center;
-    position: relative;
-    z-index: 5;
-    border-radius: 10px; /* nice soft rounded corners */
-    margin: 0 2rem; /* prevent edge to edge stretching */
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    padding: 1.5rem;
   }
+  
+  
   
   header.bg-primary {
     background: rgba(0, 0, 0, 0.6) !important;
@@ -109,7 +63,7 @@ body {
 }
 
 
-.players-left {
+/* .players-left {
   position: absolute;
   top: 10%;
   left: 2%;
@@ -120,14 +74,14 @@ body {
   gap: 10px;
   pointer-events: none;
   z-index: 1;
-}
+} */
 
-.player {
+/* .player {
   width: 70px;
   height: auto;
   object-fit: contain;
   display: block;
-}
+} */
 
 /* Home page content */
 .home-page {
@@ -148,95 +102,34 @@ footer {
 }
 
 .flanked-header {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Adjust as needed */
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 2rem 0;
-  flex-wrap: wrap;
-  gap: 2rem;
+  align-items: center;
+  z-index: 1;
 }
+
+
+
 
 .home-header {
-  flex: 1;
-  max-width: 500px;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2rem;
   border-radius: 12px;
-  z-index: 5;
+  text-align: center;
   color: white;
+  max-width: 500px;
+  width: 90%;
+  z-index: 5; /* Ensures it's above the Legends and NewEra */
+
+
 }
 
 
-/* 🌪️ Sway Animation */
-/* 🌪️ Different sway styles */
-@keyframes sway1 {
-  0% { transform: translateX(0px) rotate(0deg); }
-  50% { transform: translateX(5px) rotate(2deg); }
-  100% { transform: translateX(0px) rotate(0deg); }
-}
 
-@keyframes sway2 {
-  0% { transform: translateX(0px) rotate(0deg); }
-  50% { transform: translateX(8px) rotate(4deg); }
-  100% { transform: translateX(0px) rotate(0deg); }
-}
-
-@keyframes sway3 {
-  0% { transform: translateX(0px) rotate(0deg); }
-  50% { transform: translateX(4px) rotate(-2deg); }
-  100% { transform: translateX(0px) rotate(0deg); }
-}
-
-@keyframes sway4 {
-  0% { transform: translateX(0px) rotate(0deg); }
-  50% { transform: translateX(6px) rotate(3deg); }
-  100% { transform: translateX(0px) rotate(0deg); }
-}
-
-@keyframes sway5 {
-  0% { transform: translateX(0px) rotate(0deg); }
-  50% { transform: translateX(7px) rotate(-3deg); }
-  100% { transform: translateX(0px) rotate(0deg); }
-}
-
-.sway1 {
-  animation: sway1 3s ease-in-out infinite;
-  top: 0px;
-  left: 20px;
-}
-
-.sway2 {
-  animation: sway2 4s ease-in-out infinite;
-  top: 50px;
-  left: 0px;
-}
-
-.sway3 {
-  animation: sway3 3.5s ease-in-out infinite;
-  top: 100px;
-  left: 25px;
-}
-
-.sway4 {
-  animation: sway4 4.5s ease-in-out infinite;
-  top: 150px;
-  left: 5px;
-}
-
-.sway5 {
-  animation: sway5 3.8s ease-in-out infinite;
-  top: 200px;
-  left: 20px;
-}
-
-
-/* Apply sway to each player */
-/* .player {
-  width: 50px !important;
-  max-width: 100% !important;
-  height: auto !important;
-  object-fit: contain;
-  display: block;
-
-  animation: sway 3s ease-in-out infinite;
-} */
