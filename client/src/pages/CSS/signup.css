@@ -103,13 +103,21 @@ body {
   }
   
   /* Footer */
-  footer {
-    background-color: #333;
+  .transparent-footer {
+    width: 100%;
+    min-height: 100px; /* FORCE visible space */
+    background-color: rgba(0, 0, 0, 0.7) !important; /* semi-transparent black */
     color: white;
+    padding: 2rem 1rem;
     text-align: center;
-    padding: 1rem 0;
-    z-index: 5;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    z-index: 10;
   }
+  
   
   /* Buttons */
   .btn {
