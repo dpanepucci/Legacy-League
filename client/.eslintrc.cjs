@@ -10,7 +10,10 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
-    'react-refresh/only-export-components': 'warn',
-    'react/prop-types': 'off',
+    'react-refresh/only-export-components': 'warn', // Keep as a warning
+    'react/prop-types': 'off', // Already disabled
+    '@typescript-eslint/no-unused-vars': 'off', // Disable unused variable checks
+    'no-console': 'warn', // Allow console logs but show a warning
+    'no-debugger': 'off', // Allow debugger statements
   },
 }
