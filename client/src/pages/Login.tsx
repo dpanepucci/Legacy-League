@@ -37,7 +37,7 @@ const Login = () => {
   return (
     <main className="login-page">
   <div className="home-header">
-    <h1>Welcome to the Basketball Login</h1>
+    {/* <h1>Welcome to the Basketball Login</h1> */}
   </div>
 
   <div className="flex-row justify-center mb-4">
