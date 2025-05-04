@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import SimulateMatchup from '../PlayersPage/SimulateMatchup';
 import './index.css'; // Ensure you have the CSS file for styling
