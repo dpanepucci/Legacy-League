@@ -6,7 +6,7 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     background: 
-    url('./images/storm.jpg') center center / cover no-repeat,
+    url('/images/storm.jpg') center center / cover no-repeat,
       black; /* Fallback if storm image fails */
   }
   
