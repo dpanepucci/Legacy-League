@@ -74,7 +74,7 @@ body {
     pointer-events: none;
     animation: flash 3s infinite;
     z-index: 4; /* on top of everything */
-  /* } */ */
+  /* } */ 
   
   /* Flash keyframes */
   /* @keyframes flash {
