@@ -29,31 +29,17 @@ const Header = () => {
 
         <div className="header-buttons">
          
-          {!Auth.loggedIn() && (
-            <>
-            
+        {!Auth.loggedIn() && (
+  <>
+    <Link className="btn btn-info m-2" to="/login">
+      Login
+    </Link>
+    <Link className="btn btn-light m-2" to="/signup">
+      Signup
+    </Link>
+  </>
+)}
 
-              {/* Dropdown menu */}
-              <div className={`dropdown-wrapper ${menuOpen ? 'show' : ''}`}>
-                <div className="dropdown-menu">
-                  <Link
-                    className="btn btn-info m-2"
-                    to="/login"
-                    onClick={() => setMenuOpen(false)} // Close the menu after selecting
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    className="btn btn-light m-2"
-                    to="/signup"
-                    onClick={() => setMenuOpen(false)} // Close the menu after selecting
-                  >
-                    Signup
-                  </Link>
-                </div>
-              </div>
-            </>
-          )}
 
           {/* Profile and Logout when logged in */}
           {Auth.loggedIn() && (
