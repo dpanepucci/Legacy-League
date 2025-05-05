@@ -1706,3 +1706,25 @@ label form [type='radio'] {
     align-content: center;
   }
 }
+
+/* General responsive container */
+.container {
+  padding: 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Stack vertically by default */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Optional: Adjust spacing on medium+ screens */
+@media (min-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
+}
