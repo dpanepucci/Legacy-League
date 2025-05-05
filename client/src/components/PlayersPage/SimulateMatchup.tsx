@@ -194,17 +194,17 @@ const SimulateMatchup = () => {
     const allPlayers = [...defaultPlayersState, ...userPlayers];
     const player1 = allPlayers.find(p => p.name === player1Name);
     const player2 = allPlayers.find(p => p.name === player2Name);
-// throw error if two players are not picked
+
     if (!player1 || !player2) {
       setResult('Invalid player selection.');
       setLoading(false);
       return;
     }
-// axios to connect back and front end
+
     try {
-      const response = await axios.post('http://localhost:3001/api/simulate', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/simulate`, {
         player1,
-        player2
+        player2,
       });
       setResult(response.data.result);
       setIsModalOpen(true);
