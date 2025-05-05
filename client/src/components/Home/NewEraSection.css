@@ -43,11 +43,11 @@
 
 .tracking-image2 {
   position: fixed; /* Fix the image to the viewport */
-  top: 0;
+  top: 10vh;
   padding-left: 1000px;
   right: 0; /* Align the image to the right side of the page */
-  width: 100vw; /* Cover the entire width of the viewport */
-  height: 100vh; /* Cover the entire height of the viewport */
+  width: auto; 
+  height: 75vh;
   object-fit: cover; /* Ensure the image scales proportionally to cover the background */
   z-index: -1; /* Push the image to the back */
   opacity: 0.6; /* Make the image fully visible */
