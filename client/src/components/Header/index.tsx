@@ -1,10 +1,10 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import './index.css'; // Assuming you have a CSS file for styling
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  // const [menuOpen, setMenuOpen] = useState(false);
 
   const logout = (event: { preventDefault: () => void }) => {
     event.preventDefault();
