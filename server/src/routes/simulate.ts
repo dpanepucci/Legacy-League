@@ -11,7 +11,7 @@ const generateMatchupPrompt = (player1: any, player2: any) => {
     return `
     You are a basketball simulation engine.
 
-    Simulate a realistic 1v1 game between the following two NBA players in their prime:
+    Simulate a realistic 1v1 game between the following two basketball players:
 
     Player 1:
     Name: ${player1.name}
@@ -37,6 +37,7 @@ const generateMatchupPrompt = (player1: any, player2: any) => {
 - Shooting ability, handles, and post game
 - How their playstyles would clash
 - Mentality and clutch factor
+- If one player is clearly less skilled, have the player lose badly to the other
 
 Simulate a game to 11 (ones and twos, win by 2). Output:
 1. Final Score
