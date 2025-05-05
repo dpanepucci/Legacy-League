@@ -127,3 +127,30 @@ body {
     z-index: 5;
   }
   
+  /* Mobile view adjustments */
+@media screen and (max-width: 768px) {
+  .signup-page::before,
+  .signup-page::after {
+    display: none; /* Hide MJ and LeBron for small screens */
+  }
+
+  .home-header {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+
+  .content-section {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .transparent-footer {
+    font-size: 0.85rem;
+    padding: 1rem 0.5rem;
+  }
+}
