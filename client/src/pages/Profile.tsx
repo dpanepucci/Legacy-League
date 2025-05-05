@@ -6,7 +6,6 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
-
 const Profile = () => {
   const { username: userParam } = useParams();
 
@@ -15,10 +14,8 @@ const Profile = () => {
   });
 
   const user = data?.me || data?.user || {};
-  
-  // This if condition checks if the user is logged in and if the logged-in user's username matches the userParam.
+
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    // If the condition is true, it navigates to the "/me" route, which is likely the user's profile page.
     return <Navigate to="/me" />;
   }
 
@@ -28,29 +25,45 @@ const Profile = () => {
 
   if (!user?.username) {
     return (
-      <h4>
-        You need to be logged in to see this. Use the navigation links above to
-        sign up or log in!
-      </h4>
+      <div style={{ textAlign: 'center', padding: '20px' }}>
+        <h4 style={{ fontSize: '1.5rem', marginBottom: '10px', color: '#333', background: 'white' }}>
+          Coming soon! Battle Log:
+        </h4>
+        <p style={{ fontSize: '1.2rem', color: '#555', lineHeight: '1.6', background: 'white' }}>
+          Check out your previous battles, re-run matches, and track how your favorite legends stack up to others!
+        </p>
+      </div>
     );
   }
 
   return (
     <div>
       <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
+        <h2
+          className="col-12 col-md-10 bg-dark text-light p-3 mb-5"
+          style={{
+            textAlign: 'center',
+            fontSize: '2rem',
+            padding: '15px',
+            borderRadius: '8px',
+          }}
+        >
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
-        </div>
-        {!userParam && (
-          <div
-            className="col-12 col-md-10 mb-3 p-3"
-            style={{ border: '1px dotted #1a1a1a' }}
-          >
-            <ThoughtForm />
-          </div>
-        )}
       </div>
+      {!userParam && (
+        <div
+          className="col-12 col-md-10 mb-3 p-3"
+          style={{
+            border: '1px dotted #1a1a1a',
+            margin: '0 auto',
+            textAlign: 'center',
+          }}
+        >
+          <ThoughtForm />
+        </div>
+      )}
+    </div>
   );
 };
 
