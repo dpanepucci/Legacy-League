@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import MainLogin from '../components/BattlePage/index.tsx';
 import LegendsSection from '../components/Home/LegendsSelection.tsx';
 import NewEraSection from '../components/Home/NewEraSection.tsx';
