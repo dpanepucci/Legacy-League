@@ -27,7 +27,7 @@ const startApolloServer = async () => {
   const app = express();
 
   app.use(cors()); 
-  app.use(express.urlencoded({ extended: false }));
+  app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
 
   // Mount the OpenAI simulation route
