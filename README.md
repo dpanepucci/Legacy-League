@@ -1,5 +1,5 @@
 
-# Legacy League
+# 🏀 Legacy League
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
@@ -11,24 +11,38 @@
 - [Tests](#tests)
 - [Questions](#questions)
 
-## Description
-Face-off between two of the greatest sports Legends in NBA History!
+## 📖 Description
+Legacy League lets basketball fans explore, compare, and debate the greatest NBA players of all time. Users can flip through animated trading cards, browse player highlights, and engage in head-to-head matchups to determine the true GOAT. The app features responsive design, immersive backgrounds, and custom battle simulations.
 
-## Installation
-Click on the live link provided
+## 🛠️ Installation
+No installation required. Simply click the live link below to launch the app in your browser.
 
-## Usage
-Login/Sign Up, Check out the legends or go straight into the battle! Select two players otr create your own and hit simulate.
+## 🚀 Usage
+    1. Sign up or log in to get started.
+    2. Explore legendary and modern-era players.
+    3. Select two players or create your own.
+    4. Hit Simulate to see who comes out on top!
 
-## Contribution
-Stacy, Brad, Dylan, ChatGPT, Co-Pilot
+## 🤝 Contribution
+Project by: Stacy, Brad, Dylan
+With support from: ChatGPT, GitHub Copilot
 
-## Tests
-Click on link, test simulation, if error, restart/refresh webpage
+## 🧪 Tests
+To test functionality:
+- Open the deployed app
+- Run a battle simulation
+- If any errors occur, refresh the page and try again
 
-## License
+## 📜 License
 This project is licensed under the MIT license. 
 * [License](https://opensource.org/licenses/MIT)
 
-## Questions
-If you have any questions, please reach out via email: dylan.panepucci@gmail.com or check out my Github at https://github.com/dpanepucci
+## ❓ Questions
+For questions or feedback, feel free to reach out:
+📧 dylan.panepucci@gmail.com
+💻 GitHub Profile https://github.com/dpanepucci
+
+## 🔗 Links
+🌐 Live App: https://legacy-league.onrender.com
+
+💾 GitHub Repo: https://github.com/dpanepucci/Legacy-League
