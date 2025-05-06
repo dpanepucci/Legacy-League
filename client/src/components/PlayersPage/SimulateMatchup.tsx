@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';     
 import './SimulateMatchup.css';
 
 type Player = {
@@ -349,6 +350,7 @@ const SimulateMatchup = () => {
               </div>
             </li>
           ))}
+          
         </ul>
       </div>
 
@@ -363,11 +365,17 @@ const SimulateMatchup = () => {
           </div>
         </div>
       )}
+              {/* ↓↓↓ put Legends link at bottom ↓↓↓ */}
+              <div className="text-center mt-4">
+          <Link to="/about" className="btn btn-info m-2">
+            Legends
+          </Link>
+        </div>
+      </div>
     </div>
-    </div>
-
   );
 };
+
 
 export default SimulateMatchup;
 

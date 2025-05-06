@@ -104,19 +104,20 @@ body {
   
   /* Footer */
   .transparent-footer {
+    /* position: relative; */
+    /* bottom: 0;
+    left: 0; */
     width: 100%;
-    min-height: 100px; /* FORCE visible space */
-    background-color: rgba(0, 0, 0, 0.7) !important; /* semi-transparent black */
+    /* min-height: 80vh; */
+    background-color: rgba(0, 0, 0, 0.7) !important;
     color: white;
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
+    margin-top: 1rem;
     text-align: center;
-    margin-top: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     box-sizing: border-box;
-    display: block;
-    position: relative;
-    z-index: 10;
-  }
+    /* z-index: 10; */
+}
   
   
   /* Buttons */

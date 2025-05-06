@@ -35,7 +35,7 @@ const Login = () => {
   };
 
   return (
-    <main className="login-page">
+    <main className="page-wrapper login-page">
   <div className="home-header">
     {/* <h1>Welcome to the Basketball Login</h1> */}
   </div>
