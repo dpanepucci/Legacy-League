@@ -38,8 +38,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="signup-page"> {/* ✅ Wrap whole page here */}
-      <main className="flex-row justify-center mb-4">
+    <div className="page-wrapper signup-page"> {/* ✅ Wrap whole page here */}
+      <main className="main-content flex-row justify-center mb-4">
         <div className="col-12 col-lg-10">
           <div className="card">
             <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>

@@ -8,20 +8,21 @@ import './CSS/home.css';
 
 const Home = () => {
   return (
-    <main className="home-page">
+    <div className="page-wrapper">
+    <main className= "home-page main-content simulation">
       {/* Flanked Hero Header */}
       <div className="flanked-header">
         <LegendsSection />
 
         <header className="home-header text-center py-5">
           <h1 className="display-4 text-light">Welcome to Legacy League</h1>
-          <p className="lead text-light">Challenge your friends to determine the GOAT!</p>
-          <div>
+          {/* <p className="lead text-light">!</p> */}
+          {/* <div>
             <Link to="/about"
             className="btn btn-info m-2">
               Legends</Link>
             
-          </div>
+          </div> */}
         </header>
 
         <NewEraSection />
@@ -38,6 +39,7 @@ const Home = () => {
       </section>
 
     </main>
+    </div>
   );
 };
 
