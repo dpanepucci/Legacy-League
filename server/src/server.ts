@@ -1,10 +1,11 @@
 import express from 'express';
 import path from 'node:path';
 import type { Request, Response } from 'express';
-import db from './config/connection.js';
+
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { typeDefs, resolvers } from './schemas/index.js';
+import db from "./config/connection.js";
 import { authenticateToken } from './utils/auth.js';
 import cors from 'cors'; // Allows front end and back end to talk
 import { fileURLToPath } from 'node:url';
@@ -13,18 +14,20 @@ import { fileURLToPath } from 'node:url';
 import simulateRoute from './routes/simulate.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
+const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
   typeDefs,
   resolvers
 });
 
+ const app = express();
+
 const startApolloServer = async () => {
   await server.start();
   await db();
 
-  const PORT = process.env.PORT || 3001;
-  const app = express();
+  
+ 
 
   app.use(cors()); 
   app.use(express.urlencoded({ extended: true }));

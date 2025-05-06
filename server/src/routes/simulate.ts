@@ -1,5 +1,11 @@
+import dotenv from 'dotenv';
+
+dotenv.config()
+
 import express from 'express';
 import OpenAI from 'openai';
+
+
 
 const router = express.Router();
  // Grabs OpenAI key to send a response to GPT-3.5-turbo
