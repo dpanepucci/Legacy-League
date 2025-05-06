@@ -202,7 +202,7 @@ const SimulateMatchup = () => {
     }
     
     try {
-      const apiurl = import.meta.env.REACT_APP_API_URL
+      const apiurl = import.meta.env.VITE_API_URL
       console.log(`${apiurl}/api/simulate`, 'react api test');
       const response = await axios.post(`${apiurl}/api/simulate`, {
         
