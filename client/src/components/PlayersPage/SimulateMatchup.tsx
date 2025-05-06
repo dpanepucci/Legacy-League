@@ -200,12 +200,16 @@ const SimulateMatchup = () => {
       setLoading(false);
       return;
     }
-
+    
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/simulate`, {
+      const apiurl = import.meta.env.REACT_APP_API_URL
+      console.log(`${apiurl}/api/simulate`, 'react api test');
+      const response = await axios.post(`${apiurl}/api/simulate`, {
+        
         player1,
         player2,
       });
+      
       setResult(response.data.result);
       setIsModalOpen(true);
     } catch (error) {
